@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: flask_api
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    restart: always
+
+  bot:
+    build: ./chatbot
+    container_name: whatsapp_bot
+    depends_on:
+      - backend
+    restart: always
+    environment:
+      FLASK_URL: "http://backend:5000"
+    volumes:
+      - ./chatbot/.wwebjs_cache:/app/.wwebjs_cache
+      - ./chatbot/session:/app/session

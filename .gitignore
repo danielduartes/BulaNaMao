@@ -1,0 +1,16 @@
+# Node
+node_modules/
+**/.local-chromium/
+
+# Vector DB / Chroma
+vector_db/
+backend/vector_db/
+*.sqlite3
+*.bin
+
+# Python
+__pycache__/
+
+# Env
+.env
+venv/
